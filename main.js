@@ -21,16 +21,10 @@ const context = canvas.getContext('2d');
 
 const mesh = toMesh(square);
 
-function drawPolygon(polygon, context) {
-    context.beginPath();
-
-    const first = polygon[0];
-    context.moveTo(first.x, first.y);
-}
+context.strokeStyle = "#fff";
 
 mesh.forEach(polygon => {
-
+    drawPolygon(polygon, context);
 });
-
 
 console.log(mesh);
