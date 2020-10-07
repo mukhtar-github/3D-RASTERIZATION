@@ -14,7 +14,7 @@ export function drawPolygon(polygon, context) {
     context.stroke();
 }
 
-export function offsetToCenter(point, canvas) {
+function offsetToCenter(point, canvas) {
     point.x += canvas.width / 2;
     point.y += canvas.height / 2; 
 }
