@@ -22,9 +22,19 @@ const context = canvas.getContext('2d');
 
 const mesh = toMesh(square);
 
+function perspective(point, distance) {
+    const fov = point.z + distance;
+    point.x /= fov;
+    point.y /= fov;
+}
+
 context.strokeStyle = "#fff";
 
 mesh.forEach(polygon => {
+    polygon.forEach(point => {
+        perspective(point, 1);
+    });
+
     drawPolygon(polygon, context);
 });
 
