@@ -1,4 +1,4 @@
-import { square } from './models.js';
+import { square, doubleSquare } from './models.js';
 import { drawPolygon } from './draw.js';
 
 function toPoint(values) {
