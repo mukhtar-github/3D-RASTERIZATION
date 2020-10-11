@@ -28,11 +28,17 @@ function perspective(point, distance) {
     point.y /= fov;
 }
 
-context.strokeStyle = "#fff";
+function zoom(point, factor) {
+    const scale = Math.pow(factor, 2);
+    point.x *= scale;
+    point.y *= scale;
+}
 
+context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
     polygon.forEach(point => {
         perspective(point, 2);
+        zoom(point, 8)
     });
 
     drawPolygon(polygon, context);
