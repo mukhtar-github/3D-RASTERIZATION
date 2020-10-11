@@ -20,7 +20,7 @@ function toMesh(shape) {
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const mesh = toMesh(square);
+const mesh = toMesh(doubleSquare);
 
 function perspective(point, distance) {
     const fov = point.z + distance;
