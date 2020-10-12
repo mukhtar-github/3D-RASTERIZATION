@@ -34,11 +34,13 @@ function zoom(point, factor) {
     point.y *= scale;
 }
 
+class Camera
+
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
     polygon.forEach(point => {
-        perspective(point, 2);
-        zoom(point, 8)
+        perspective(point, 100);
+        zoom(point, 8);
     });
 
     drawPolygon(polygon, context);
