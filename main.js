@@ -34,7 +34,11 @@ function zoom(point, factor) {
     point.y *= scale;
 }
 
-class Camera
+class Camera {
+    constructor() {
+        this.pos
+    }
+}
 
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
