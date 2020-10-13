@@ -39,13 +39,17 @@ class Camera {
         this.pos = {z: 100};
         this.zoom = 8;
     }
+
+    trnsform(point) {
+        perspective(point, this.pos);
+        zoom(point, this.zoom);
+    }
 }
 
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
     polygon.forEach(point => {
-        perspective(point, 100);
-        zoom(point, 8);
+        
     });
 
     drawPolygon(polygon, context);
