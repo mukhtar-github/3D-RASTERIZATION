@@ -36,7 +36,8 @@ function zoom(point, factor) {
 
 class Camera {
     constructor() {
-        this.pos
+        this.pos = {z: 100};
+        this.zoom = 8;
     }
 }
 
