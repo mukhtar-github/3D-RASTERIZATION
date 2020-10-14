@@ -46,12 +46,12 @@ class Camera {
     }
 }
 
-const camrera = new Camera();
+const camera = new Camera();
 
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
     polygon.forEach(point => {
-        
+       camera.transform(point);
     });
 
     drawPolygon(polygon, context);
