@@ -46,6 +46,8 @@ class Camera {
     }
 }
 
+const camrera = new Camera();
+
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
     polygon.forEach(point => {
