@@ -31,7 +31,9 @@ context.strokeStyle = "#fff";
 
 function drawMesh(mesh) {
     mesh.forEach(polygon => {
-        polygon.forEach(point => {
+        const projectedPolygon = polygon.map(point => ({...point}));
+
+        projectedPolygon.forEach(point => {
            camera.transform(point);
         });
     
@@ -39,4 +41,12 @@ function drawMesh(mesh) {
     });
 }
 
-console.log(mesh);
+function animate() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    camera.pos.z += 0.1;
+    drawMesh(mesh);
+    requestAnimationFrame(animate);
+}
+
+animate();
+//drawMesh(mesh);
