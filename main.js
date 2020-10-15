@@ -1,6 +1,6 @@
-import { square, doubleSquare } from './models.js';
-import { drawPolygon } from './draw.js';
-import { Camera } from './camera';
+import {square, doubleSquare} from './models.js';
+import {drawPolygon} from './draw.js';
+import {Camera} from './camera.js';
 
 function toPoint(values) {
     return {
@@ -15,7 +15,7 @@ function toPolygon(shape) {
 }
 
 function toMesh(shape) {
-    return square.map(toPolygon);
+    return shape.map(toPolygon);
 }
 
 const canvas = document.querySelector('canvas');
@@ -24,6 +24,8 @@ const context = canvas.getContext('2d');
 const mesh = toMesh(doubleSquare);
 
 const camera = new Camera();
+camera.pos.z = 200;
+camera.zoom = 12;
 
 context.strokeStyle = "#fff";
 mesh.forEach(polygon => {
