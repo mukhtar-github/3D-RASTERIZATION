@@ -1,5 +1,6 @@
 import { square, doubleSquare } from './models.js';
 import { drawPolygon } from './draw.js';
+import { Camera } from './camera';
 
 function toPoint(values) {
     return {
@@ -22,30 +23,6 @@ const context = canvas.getContext('2d');
 
 const mesh = toMesh(doubleSquare);
 
-function perspective(point, distance) {
-    const fov = point.z + distance;
-    point.x /= fov;
-    point.y /= fov;
-}
-
-function zoom(point, factor) {
-    const scale = Math.pow(factor, 2);
-    point.x *= scale;
-    point.y *= scale;
-}
-
-class Camera {
-    constructor() {
-        this.pos = {z: 100};
-        this.zoom = 8;
-    }
-
-    trnsform(point) {
-        perspective(point, this.pos);
-        zoom(point, this.zoom);
-    }
-}
-
 const camera = new Camera();
 
 context.strokeStyle = "#fff";
@@ -56,5 +33,4 @@ mesh.forEach(polygon => {
 
     drawPolygon(polygon, context);
 });
-
 console.log(mesh);
