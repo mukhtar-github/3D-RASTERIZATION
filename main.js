@@ -1,4 +1,4 @@
-import {square, doubleSquare} from './models.js';
+import {square, doubleSquare, cube} from './models.js';
 import {drawPolygon} from './draw.js';
 import {Camera} from './camera.js';
 
@@ -21,18 +21,22 @@ function toMesh(shape) {
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const mesh = toMesh(doubleSquare);
+const mesh = toMesh(cube);
 
 const camera = new Camera();
 camera.pos.z = 200;
 camera.zoom = 12;
 
 context.strokeStyle = "#fff";
-mesh.forEach(polygon => {
-    polygon.forEach(point => {
-       camera.transform(point);
-    });
 
-    drawPolygon(polygon, context);
-});
+function drawMesh(mesh) {
+    mesh.forEach(polygon => {
+        polygon.forEach(point => {
+           camera.transform(point);
+        });
+    
+        drawPolygon(polygon, context);
+    });
+}
+
 console.log(mesh);
