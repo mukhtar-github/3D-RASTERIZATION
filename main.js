@@ -22,6 +22,7 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
 const mesh = toMesh(cube);
+const position= {x: 0, y: 0, z: 0};
 
 const camera = new Camera();
 camera.pos.z = 200;
@@ -29,20 +30,28 @@ camera.zoom = 12;
 
 context.strokeStyle = "#fff";
 
+function offset(point, position) {
+    point.x += position.x;
+    point.y += position.y;
+    point.z += position.z;
+}
+
 function drawMesh(mesh) {
     mesh.forEach(polygon => {
         const projectedPolygon = polygon.map(point => ({...point}));
 
         projectedPolygon.forEach(point => {
+            offset(point, position);
            camera.transform(point);
         });
     
-        drawPolygon(polygon, context);
+        drawPolygon(projectedPolygon, context);
     });
 }
 
 function animate() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+    position.x += 0.1;
     camera.pos.z += 0.1;
     drawMesh(mesh);
     requestAnimationFrame(animate);
