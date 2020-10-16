@@ -49,9 +49,9 @@ function drawMesh(mesh) {
     });
 }
 
-function animate() {
+function animate(time) {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    position.x += 0.1;
+    position.x =Math.sin(time / 1000);
     camera.pos.z += 0.1;
     drawMesh(mesh);
     requestAnimationFrame(animate);
