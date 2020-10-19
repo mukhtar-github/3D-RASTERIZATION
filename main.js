@@ -6,7 +6,9 @@ import {toMesh} from './mesh.js';
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const mesh = toMesh(cube);
+const scene = [
+    toMesh(cube),
+];
 
 const camera = new Camera();
 camera.pos.z = 200;
@@ -29,11 +31,16 @@ function drawMesh(mesh) {
 
 function animate(time) {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    mesh.rotation.y += 0.01;
-    mesh.position.x = Math.sin(time / 300) * 80;
-    mesh.position.y = Math.sin(time / 1000) * 80;
+    
     camera.pos.z += 0.1;
-    drawMesh(mesh);
+
+    scene.forEach(mesh => {
+        mesh.rotation.y += 0.01;
+        mesh.position.x = Math.sin(time / 300) * 80;
+        mesh.position.y = Math.sin(time / 1000) * 80;
+        drawMesh(mesh);
+    });
+    
     requestAnimationFrame(animate);
 }
 
