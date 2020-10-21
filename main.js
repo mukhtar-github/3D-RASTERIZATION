@@ -8,6 +8,7 @@ const context = canvas.getContext('2d');
 
 const scene = [
     toMesh(cube),
+    toMesh(pyramid)
 ];
 
 const camera = new Camera();
