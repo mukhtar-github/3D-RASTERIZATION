@@ -2,13 +2,14 @@ export function createRenderer(canvas) {
     const context = canvas.getContext('2d');
     
     return function render(scene, camera) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
         scene.forEach(mesh => {
-            drawMesh(mesh, context);
+            drawMesh(mesh, camera, context);
         });
     }
 }
 
-function drawMesh(mesh, context) {
+function drawMesh(mesh, camera, context) {
     mesh.polygons.forEach(polygon => {
         const projectedPolygon = polygon.map(point => ({...point}));
 

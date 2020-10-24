@@ -20,8 +20,6 @@ camera.zoom = 12;
 context.strokeStyle = "#fff";
 
 function animate(time) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    
     camera.pos.z += 0.1;
 
     {
@@ -42,4 +40,3 @@ function animate(time) {
 }
 
 animate(0);
-//drawMesh(mesh);
