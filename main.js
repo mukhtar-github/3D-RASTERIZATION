@@ -2,8 +2,11 @@ import {square, doubleSquare, cube, pyramid} from './models.js';
 import {drawPolygon} from './draw.js';
 import {Camera} from './camera.js';
 import {toMesh} from './mesh.js';
+import {createRenderer} from './render.js'
 
 const canvas = document.querySelector('canvas');
+
+const render = createRenderer(canvas);
 
 const scene = [
     toMesh(cube),
@@ -15,29 +18,6 @@ camera.pos.z = 200;
 camera.zoom = 12;
 
 context.strokeStyle = "#fff";
-
-function createRenderer(canvas) {
-    const context = canvas.getContext('2d');
-    
-    return render(scene) {
-        scene.forEach(mesh => {
-            drawMesh(mesh, context);
-        });
-    }
-}
-
-function drawMesh(mesh, context) {
-    mesh.polygons.forEach(polygon => {
-        const projectedPolygon = polygon.map(point => ({...point}));
-
-        projectedPolygon.forEach(point => {
-            mesh.transform(point);
-           camera.transform(point);
-        });
-    
-        drawPolygon(projectedPolygon, context);
-    });
-}
 
 function animate(time) {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -57,7 +37,7 @@ function animate(time) {
         mesh.position.x = Math.sin(time / 500) * 80;
         mesh.position.y = Math.sin(time / 600) * 80;
     }
-    
+    render(scene, camera);
     requestAnimationFrame(animate);
 }
 
