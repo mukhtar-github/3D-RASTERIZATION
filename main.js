@@ -4,7 +4,6 @@ import {Camera} from './camera.js';
 import {toMesh} from './mesh.js';
 
 const canvas = document.querySelector('canvas');
-const context = canvas.getContext('2d');
 
 const scene = [
     toMesh(cube),
@@ -17,7 +16,17 @@ camera.zoom = 12;
 
 context.strokeStyle = "#fff";
 
-function drawMesh(mesh) {
+function createRenderer(canvas) {
+    const context = canvas.getContext('2d');
+    
+    return render(scene) {
+        scene.forEach(mesh => {
+            drawMesh(mesh, context);
+        });
+    }
+}
+
+function drawMesh(mesh, context) {
     mesh.polygons.forEach(polygon => {
         const projectedPolygon = polygon.map(point => ({...point}));
 
@@ -48,10 +57,6 @@ function animate(time) {
         mesh.position.x = Math.sin(time / 500) * 80;
         mesh.position.y = Math.sin(time / 600) * 80;
     }
-
-    scene.forEach(mesh => {
-        drawMesh(mesh);
-    });
     
     requestAnimationFrame(animate);
 }
