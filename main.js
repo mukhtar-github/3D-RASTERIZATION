@@ -36,17 +36,17 @@ function animate(time) {
     camera.pos.z += 0.1;
 
     {
-    const scene = [0];
+    const mesh = scene[0];
     mesh.rotation.y += 0.01;
     mesh.position.x = Math.sin(time / 300) * 80;
     mesh.position.y = Math.sin(time / 1000) * 80;
     }
 
     {
-        const scene = [1];
-        mesh.rotation.y += 0.01;
-        mesh.position.x = Math.sin(time / 300) * 80;
-        mesh.position.y = Math.sin(time / 1000) * 80;
+        const mesh = scene[1];
+        mesh.rotation.y -= 0.01;
+        mesh.position.x = Math.sin(time / 500) * 80;
+        mesh.position.y = Math.sin(time / 600) * 80;
     }
 
     scene.forEach(mesh => {
