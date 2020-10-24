@@ -17,8 +17,6 @@ const camera = new Camera();
 camera.pos.z = 200;
 camera.zoom = 12;
 
-context.strokeStyle = "#fff";
-
 function animate(time) {
     camera.pos.z += 0.1;
 

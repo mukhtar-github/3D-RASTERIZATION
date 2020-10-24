@@ -24,6 +24,7 @@ class Vec {
 
 class Mesh {
     constructor(polygons) {
+        this.color = '#fff';
         this.polygons = polygons;
         this.position = new Vec(0, 0, 0);
         this.rotation = new Vec(0, 0, 0);

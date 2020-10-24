@@ -10,6 +10,7 @@ export function createRenderer(canvas) {
 }
 
 function drawMesh(mesh, camera, context) {
+    context.strokeStyle = mesh.color;
     mesh.polygons.forEach(polygon => {
         const projectedPolygon = polygon.map(point => ({...point}));
 
