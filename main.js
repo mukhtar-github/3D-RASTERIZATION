@@ -12,6 +12,9 @@ const scene = [
     toMesh(pyramid)
 ];
 
+scene[0].color = 'red';
+scene[1].color = 'purple';
+
 const camera = new Camera();
 camera.pos.z = 200;
 camera.zoom = 12;
