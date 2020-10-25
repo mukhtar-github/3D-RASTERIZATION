@@ -1,4 +1,4 @@
-import {drawPolygon} from './draw.js';
+import {drawMesh} from './draw.js';
 
 export function createRenderer(canvas) {
     const context = canvas.getContext('2d');
@@ -8,5 +8,5 @@ export function createRenderer(canvas) {
         scene.forEach(mesh => {
             drawMesh(mesh, camera, context);
         });
-    }
+    };
 }
