@@ -1,4 +1,18 @@
-export function drawPolygon(polygon, context) {
+export function drawMesh(mesh, camera, context) {
+    context.strokeStyle = mesh.color;
+    mesh.polygons.forEach(polygon => {
+        const projectedPolygon = polygon.map(point => ({...point}));
+
+        projectedPolygon.forEach(point => {
+            mesh.transform(point);
+           camera.transform(point);
+        });
+    
+        drawPolygon(projectedPolygon, context);
+    });
+}
+
+function drawPolygon(polygon, context) {
     polygon.forEach(point => {
         offsetToCenter(point, context.canvas);
     });
@@ -12,20 +26,6 @@ export function drawPolygon(polygon, context) {
     });
     context.lineTo(first.x, first.y);
     context.stroke();
-}
-
-function drawMesh(mesh, camera, context) {
-    context.strokeStyle = mesh.color;
-    mesh.polygons.forEach(polygon => {
-        const projectedPolygon = polygon.map(point => ({...point}));
-
-        projectedPolygon.forEach(point => {
-            mesh.transform(point);
-           camera.transform(point);
-        });
-    
-        drawPolygon(projectedPolygon, context);
-    });
 }
 
 function offsetToCenter(point, canvas) {

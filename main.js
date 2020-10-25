@@ -1,5 +1,4 @@
 import {square, doubleSquare, cube, pyramid} from './models.js';
-import {drawPolygon} from './draw.js';
 import {Camera} from './camera.js';
 import {toMesh} from './mesh.js';
 import {createRenderer} from './render.js'

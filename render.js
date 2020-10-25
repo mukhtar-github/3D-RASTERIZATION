@@ -1,3 +1,5 @@
+import {drawPolygon} from './draw.js';
+
 export function createRenderer(canvas) {
     const context = canvas.getContext('2d');
     
