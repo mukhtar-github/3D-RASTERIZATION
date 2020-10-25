@@ -24,6 +24,7 @@ function animate(time) {
 
     {
     const mesh = scene[0];
+    mesh.rotation.x -= 0.03;
     mesh.rotation.y += 0.01;
     mesh.position.x = Math.sin(time / 300) * 80;
     mesh.position.y = Math.sin(time / 1000) * 80;
@@ -34,6 +35,7 @@ function animate(time) {
         mesh.rotation.y -= 0.01;
         mesh.position.x = Math.sin(time / 500) * 80;
         mesh.position.y = Math.sin(time / 600) * 80;
+        mesh.position.z = Math.cos(time / 5000) * 500;
     }
     render(scene, camera);
     requestAnimationFrame(animate);
